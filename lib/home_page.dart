@@ -43,15 +43,25 @@ class _HomePageState extends State<HomePage> {
                   fit: BoxFit.cover,
                 )),
             Container(
-              color: Colors.red,
-              height: 75,
-              width: 75,
+              color: Colors.black.withOpacity(0.6),
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
             ),
-            Container(
-              color: Colors.blue,
-              height: 35,
-              width: 35,
-            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FlutterLogo(
+                    style: FlutterLogoStyle.horizontal,
+                    size: 150,
+                    textColor: Colors.white,
+                  ),
+                  ElevatedButton(onPressed: () {}, child: Text('Entrar no app'))
+                ],
+              ),
+            )
           ],
         ),
       ),
