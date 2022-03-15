@@ -27,17 +27,20 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final names = ['João', 'Maria', 'Joaquim', 'Renan'];
+
     return Scaffold(
       appBar: AppBar(title: Text('Home')),
-      body: Center(child: Text('Flutterando ${counter}')),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          // Alterar algum estado
-          setState(() {
-            counter++;
-          });
-        },
+      body: SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        // Estrutura para fazer listagem usando arrays
+        child: ListView.builder(
+          itemCount: names.length,
+          itemBuilder: (context, index) {
+            return ListTile(title: Text('${names[index]}'));
+          },
+        ),
       ),
     );
   }
