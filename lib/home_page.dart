@@ -9,7 +9,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var counter = 0;
+  final controller = TextEditingController();
+
+  final list = <String>[];
 
   // Chama quando construído
   @override
@@ -27,20 +29,41 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final names = ['João', 'Maria', 'Joaquim', 'Renan'];
-
     return Scaffold(
       appBar: AppBar(title: Text('Home')),
-      body: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-        // Estrutura para fazer listagem usando arrays
-        child: ListView.builder(
-          itemCount: names.length,
-          itemBuilder: (context, index) {
-            return ListTile(title: Text('${names[index]}'));
-          },
-        ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(child: TextField(controller: controller)),
+                IconButton(
+                  onPressed: () {
+                    final text = controller.text;
+                    setState(() {
+                      list.add(text);
+                    });
+                    controller.clear();
+                  },
+                  icon: const Icon(Icons.add),
+                )
+              ],
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: list.length,
+              itemBuilder: (context, index) {
+                final item = list[index];
+
+                return ListTile(
+                  title: Text(item),
+                );
+              },
+            ),
+          )
+        ],
       ),
     );
   }
