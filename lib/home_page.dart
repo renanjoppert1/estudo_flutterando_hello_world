@@ -38,12 +38,12 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                child: Image.network(
-                  'https://news.microsoft.com/wp-content/uploads/prod/sites/42/2020/09/MS_Penguin-Counting-Story_1900x800-1600x674-1-960x629.jpg',
+                child: Image.asset(
+                  'assets/imgs/background.jpg',
                   fit: BoxFit.cover,
                 )),
             Container(
-              color: Colors.orange,
+              color: Colors.red,
               height: 75,
               width: 75,
             ),
